@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XDeepFake · Real-Time Image Detector</title>
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.19.2/dist/ort.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/ort.min.js"></script>
 <style>
 :root,[data-theme="light"]{
   --text-xs:clamp(.75rem,.7rem + .25vw,.875rem);
@@ -393,8 +393,20 @@ canvas{width:100%;height:auto}.source-video{display:none}
       setProgress(0);
       const modelBuffer = await fetchWithProgress(MODEL.path);
       setStatus('Creating inference session...', 'busy');
-      const options = { executionProviders: ['wasm'], graphOptimizationLevel: 'all' };
-      session = await ort.InferenceSession.create(modelBuffer, options);
+      const epList = [['webgpu'],['webgl'],['wasm']];
+let lastErr = null;
+for (const eps of epList) {
+try {
+setStatus('Creating inference session ('+eps[0]+')...', 'busy');
+session = await ort.InferenceSession.create(modelBuffer, { executionProviders: eps, graphOptimizationLevel: 'all' });
+lastErr = null;
+break;
+} catch (epErr) {
+lastErr = epErr;
+console.warn('EP '+eps[0]+' failed:', epErr);
+}
+}
+if (!session || lastErr) throw (lastErr || new Error('No execution provider could load the model.'));
       inputName = session.inputNames[0];
       outputName = session.outputNames[0];
       setProgress(null);
@@ -402,7 +414,7 @@ canvas{width:100%;height:auto}.source-video{display:none}
     } catch (error) {
       console.error(error);
       setProgress(null);
-      setStatus('Model error: ' + error.message + ' Place vit_deepfake.onnx beside this HTML file.', 'err');
+      var hint = /ConvInteger|not find an implementation|NOT_IMPLEMENTED/i.test(error.message) ? ' The model uses a quantized op (ConvInteger) unsupported by ONNX Runtime Web. Re-export vit_deepfake.onnx as fp32 or with QDQ quantization (QuantFormat.QDQ).' : ' Place vit_deepfake.onnx beside this HTML file.'; setStatus('Model error: ' + error.message + hint, 'err');
     }
   }
 
