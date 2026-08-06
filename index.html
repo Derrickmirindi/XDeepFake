@@ -9,7 +9,7 @@
 <style>
 :root{--bg:#f7f6f2;--surface:#fbfaf7;--surface2:#f1efea;--border:#d7d3cb;--text:#28251d;--muted:#706c64;--primary:#7d1218;--primary2:#611015;--real:#437a22;--fake:#a12c7b;--warning:#b07a00;--shadow:0 12px 34px #00000012;--r:16px;--font:'Satoshi',Inter,Arial,sans-serif}
 [data-theme="dark"]{--bg:#171614;--surface:#1e1d1a;--surface2:#272521;--border:#3d3a36;--text:#eee9e0;--muted:#b0aba1;--primary:#db636a;--primary2:#ef7a81;--real:#7fbd59;--fake:#e57bbb;--warning:#e5ad31;--shadow:0 12px 34px #0006}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.55}.container{max-width:1180px;margin:auto;padding:24px}button,input{font:inherit}.topbar{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;padding:26px 0;border-bottom:1px solid var(--border);margin-bottom:28px}.brand{display:flex;gap:16px}.logo{width:52px;height:52px;flex:none;border-radius:13px;display:grid;place-items:center;color:white;background:linear-gradient(135deg,var(--primary),var(--primary2));font-size:25px;font-weight:900}h1{margin:0;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1}.subtitle{max-width:720px;margin:8px 0 0;color:var(--muted)}.icon-btn,.btn,.mode-btn{border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer}.icon-btn{width:44px;height:44px;border-radius:50%;font-size:20px}.layout{display:grid;grid-template-columns:320px 1fr;gap:24px}.panel,.stage{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow)}.panel{padding:22px;align-self:start;position:sticky;top:20px}.stage{padding:22px}.section-title{font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:900;margin-bottom:10px}.mode-list{display:grid;gap:8px}.mode-btn{padding:13px;text-align:left;border-radius:11px;font-weight:700}.mode-btn.active{background:var(--primary);color:white;border-color:var(--primary)}.helper{font-size:.88rem;color:var(--muted)}.control{margin-top:24px}.control label{display:flex;justify-content:space-between;font-weight:700;font-size:.9rem}input[type=range]{width:100%;accent-color:var(--primary)}.model-card,.note{margin-top:22px;padding:14px;border-radius:12px;background:var(--surface2);border:1px solid var(--border)}code{font-size:.78rem;word-break:break-all}.note{border-left:4px solid var(--primary);font-size:.85rem;color:var(--muted)}.status{display:flex;align-items:center;gap:10px;padding:13px;border:1px solid var(--border);border-radius:12px;background:var(--surface2);margin-bottom:14px}.dot{width:13px;height:13px;border-radius:50%;background:var(--muted);flex:none}.dot.on{background:var(--real)}.dot.busy{background:var(--warning);animation:pulse 1s infinite}.dot.err{background:var(--fake)}@keyframes pulse{50%{opacity:.3}}.progress{height:7px;background:var(--surface2);border-radius:99px;overflow:hidden;margin-bottom:14px}.progress.hidden,.hidden{display:none!important}.progress div{height:100%;width:0;background:var(--primary)}.drop{min-height:150px;display:grid;place-items:center;text-align:center;border:2px dashed var(--border);border-radius:14px;padding:20px;cursor:pointer;margin-bottom:16px}.drop:hover,.drop.drag{border-color:var(--primary);background:var(--surface2)}.drop strong{color:var(--primary)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.btn{padding:10px 16px;border-radius:999px;font-weight:700}.btn.primary{background:var(--primary);color:white;border-color:var(--primary)}.btn:disabled{opacity:.45;cursor:not-allowed}.canvas-shell{min-height:320px;display:grid;place-items:center;overflow:hidden;border-radius:14px;background:#101010;border:1px solid var(--border)}canvas{display:block;width:100%;height:auto}.source-video{display:none}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}.metric,.prob{padding:14px;border:1px solid var(--border);background:var(--surface2);border-radius:12px}.k,.label{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:900}.v,.value{font-size:1.25rem;font-weight:900;margin-top:5px}.result{margin-top:16px;padding:18px;border:1px solid var(--border);border-radius:13px;background:var(--surface2)}.result-head{display:flex;justify-content:space-between;gap:12px;align-items:center}.badge{padding:6px 11px;border-radius:999px;font-size:.73rem;font-weight:900;text-transform:uppercase}.badge.real{color:var(--real);background:color-mix(in srgb,var(--real) 17%,transparent)}.badge.fake{color:var(--fake);background:color-mix(in srgb,var(--fake) 17%,transparent)}.track{height:11px;border-radius:99px;background:var(--surface);overflow:hidden;margin:14px 0}.fill{height:100%;width:0;background:linear-gradient(90deg,var(--real),var(--fake));transition:width .2s}.probs{display:grid;grid-template-columns:1fr 1fr;gap:12px}.footer{padding:28px 0;color:var(--muted);font-size:.8rem}@media(max-width:900px){.layout{grid-template-columns:1fr}.panel{position:static}.metrics{grid-template-columns:1fr 1fr}}@media(max-width:560px){.container{padding:14px}.topbar{flex-direction:column}.metrics,.probs{grid-template-columns:1fr}.stage,.panel{padding:15px}}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.55}.container{max-width:1180px;margin:auto;padding:24px}button,input{font:inherit}.topbar{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;padding:26px 0;border-bottom:1px solid var(--border);margin-bottom:28px}.brand{display:flex;gap:16px}.logo{width:52px;height:52px;flex:none;border-radius:13px;display:grid;place-items:center;color:white;background:linear-gradient(135deg,var(--primary),var(--primary2));font-size:25px;font-weight:900}h1{margin:0;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1}.subtitle{max-width:720px;margin:8px 0 0;color:var(--muted)}.icon-btn,.btn,.mode-btn{border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer}.icon-btn{width:44px;height:44px;border-radius:50%;font-size:20px}.layout{display:grid;grid-template-columns:320px 1fr;gap:24px}.panel,.stage{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow)}.panel{padding:22px;align-self:start;position:sticky;top:20px}.stage{padding:22px}.section-title{font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:900;margin-bottom:10px}.mode-list{display:grid;gap:8px}.mode-btn{padding:13px;text-align:left;border-radius:11px;font-weight:700}.mode-btn.active{background:var(--primary);color:white;border-color:var(--primary)}.helper{font-size:.88rem;color:var(--muted)}.control{margin-top:24px}.control label{display:flex;justify-content:space-between;font-weight:700;font-size:.9rem}input[type=range]{width:100%;accent-color:var(--primary)}.model-card,.note{margin-top:22px;padding:14px;border-radius:12px;background:var(--surface2);border:1px solid var(--border)}code{font-size:.78rem;word-break:break-all}.note{border-left:4px solid var(--primary);font-size:.85rem;color:var(--muted)}.status{display:flex;align-items:center;gap:10px;padding:13px;border:1px solid var(--border);border-radius:12px;background:var(--surface2);margin-bottom:14px}.dot{width:13px;height:13px;border-radius:50%;background:var(--muted);flex:none}.dot.on{background:var(--real)}.dot.busy{background:var(--warning);animation:pulse 1s infinite}.dot.err{background:var(--fake)}@keyframes pulse{50%{opacity:.3}}.progress{height:7px;background:var(--surface2);border-radius:99px;overflow:hidden;margin-bottom:14px}.progress.hidden,.hidden{display:none!important}.progress div{height:100%;width:0;background:var(--primary)}.drop{min-height:150px;display:grid;place-items:center;text-align:center;border:2px dashed var(--border);border-radius:14px;padding:20px;cursor:pointer;margin-bottom:16px}.drop:hover,.drop.drag{border-color:var(--primary);background:var(--surface2)}.drop strong{color:var(--primary)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.btn{padding:10px 16px;border-radius:999px;font-weight:700}.btn.primary{background:var(--primary);color:white;border-color:var(--primary)}.btn:disabled{opacity:.45;cursor:not-allowed}.canvas-shell{min-height:320px;display:grid;place-items:center;overflow:hidden;border-radius:14px;background:#101010;border:1px solid var(--border)}canvas{display:block;width:100%;height:auto}.source-video{display:none}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}.metric,.prob{padding:14px;border:1px solid var(--border);background:var(--surface2);border-radius:12px}.k,.label{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:900}.v,.value{font-size:1.25rem;font-weight:900;margin-top:5px}.result{margin-top:16px;padding:18px;border:1px solid var(--border);border-radius:13px;background:var(--surface2)}.result-head{display:flex;justify-content:space-between;gap:12px;align-items:center}.badge{padding:6px 11px;border-radius:999px;font-size:.73rem;font-weight:900;text-transform:uppercase}.badge.real{color:var(--real);background:color-mix(in srgb,var(--real) 17%,transparent)}.badge.fake{color:var(--fake);background:color-mix(in srgb,var(--fake) 17%,transparent)}.track{height:11px;border-radius:99px;background:var(--surface);overflow:hidden;margin:14px 0}.fill{height:100%;width:0;background:linear-gradient(90deg,var(--real),var(--fake));transition:width .2s}.probs{display:grid;grid-template-columns:1fr 1fr;gap:12px}.debug{margin-top:14px;padding:12px;border:1px dashed var(--border);border-radius:10px;color:var(--muted);font:12px ui-monospace,SFMono-Regular,Consolas,monospace}.footer{padding:28px 0;color:var(--muted);font-size:.8rem}@media(max-width:900px){.layout{grid-template-columns:1fr}.panel{position:static}.metrics{grid-template-columns:1fr 1fr}}@media(max-width:560px){.container{padding:14px}.topbar{flex-direction:column}.metrics,.probs{grid-template-columns:1fr}.stage,.panel{padding:15px}}
 </style>
 </head>
 <body>
@@ -24,7 +24,7 @@
   <div class="mode-list"><button class="mode-btn active" data-mode="image">Image upload</button><button class="mode-btn" data-mode="camera">Live camera</button></div>
   <p class="helper">Inference runs locally with ONNX Runtime Web. Use GitHub Pages or localhost; do not open this page through <code>file://</code>.</p>
   <div class="control"><div class="section-title">Decision threshold</div><label for="threshold"><span>Fake threshold</span><span id="thresholdValue">0.50</span></label><input id="threshold" type="range" min="0.05" max="0.95" step="0.01" value="0.50"><p class="helper">A higher threshold reduces false-positive deepfake warnings.</p></div>
-  <div class="model-card"><div class="section-title">Browser model</div><code>./vit_deepfake_web.onnx</code><p class="helper">Expected output order: class 0 = real, class 1 = fake.</p></div>
+  <div class="model-card"><div class="section-title">Browser model</div><code>./vit_deepfake_web.onnx</code><p class="helper"><strong>Correct output order:</strong> class 0 = fake, class 1 = real.</p></div>
   <div class="note">Research use only. Compression, screenshots, distribution shifts, and unseen generators can reduce reliability.</div>
 </aside>
 <section class="stage">
@@ -34,7 +34,7 @@
   <section id="cameraPane" class="hidden"><div class="actions"><button id="startCam" class="btn primary">Start camera</button><button id="stopCam" class="btn" disabled>Stop camera</button><button id="captureFrame" class="btn" disabled>Analyze frame</button></div></section>
   <div class="canvas-shell"><canvas id="canvas" width="960" height="540"></canvas><video id="video" class="source-video" playsinline muted></video></div>
   <div class="metrics"><div class="metric"><div class="k">Prediction</div><div id="metricLabel" class="v">—</div></div><div class="metric"><div class="k">Confidence</div><div id="metricConf" class="v">—</div></div><div class="metric"><div class="k">Fake score</div><div id="metricFake" class="v">—</div></div><div class="metric"><div class="k">Inference</div><div id="metricMs" class="v">—</div></div></div>
-  <div class="result"><div class="result-head"><div><div class="section-title">Result</div><div id="resultSummary">Load the model and analyze an input.</div></div><span id="resultBadge" class="badge real">Waiting</span></div><div class="track"><div id="scoreBar" class="fill"></div></div><div class="probs"><div class="prob"><div class="label">Real probability</div><div id="realProb" class="value">—</div></div><div class="prob"><div class="label">Fake probability</div><div id="fakeProb" class="value">—</div></div></div></div>
+  <div class="result"><div class="result-head"><div><div class="section-title">Result</div><div id="resultSummary">Load the model and analyze an input.</div></div><span id="resultBadge" class="badge real">Waiting</span></div><div class="track"><div id="scoreBar" class="fill"></div></div><div class="probs"><div class="prob"><div class="label">Real probability</div><div id="realProb" class="value">—</div></div><div class="prob"><div class="label">Fake probability</div><div id="fakeProb" class="value">—</div></div></div><div id="debugOutput" class="debug">Raw output will appear here.</div></div>
 </section>
 </main>
 <footer class="footer">XDeepFake · ViT-Tiny FP32 · ONNX Runtime Web</footer>
@@ -42,24 +42,47 @@
 <script>
 (() => {
 'use strict';
-const $ = id => document.getElementById(id);
-const MODEL = {path:'./vit_deepfake_web.onnx',size:224,fakeIndex:1,realIndex:0,mean:[.485,.456,.406],std:[.229,.224,.225]};
+const $=id=>document.getElementById(id);
+
+// ImageFolder sorted the training folders alphabetically: ['fake', 'real'].
+// Therefore model output index 0 is FAKE and index 1 is REAL.
+const MODEL={
+  path:'./vit_deepfake_web.onnx',
+  size:224,
+  fakeIndex:0,
+  realIndex:1,
+  mean:[0.485,0.456,0.406],
+  std:[0.229,0.224,0.225]
+};
+
 const canvas=$('canvas'),ctx=canvas.getContext('2d'),video=$('video'),thresholdEl=$('threshold');
 let session=null,inputName=null,outputName=null,stream=null,threshold=Number(thresholdEl.value),running=false;
 
-function status(text,kind=''){ $('statusText').textContent=text; $('statusDot').className='dot '+kind; }
-function progress(value){ $('progress').classList.toggle('hidden',value==null); $('progressBar').style.width=(value||0)+'%'; }
+function status(text,kind=''){$('statusText').textContent=text;$('statusDot').className='dot '+kind}
+function progress(value){$('progress').classList.toggle('hidden',value==null);$('progressBar').style.width=(value||0)+'%'}
 function sigmoid(x){return 1/(1+Math.exp(-x))}
-function softmax(a){const m=Math.max(...a),e=a.map(x=>Math.exp(x-m)),s=e.reduce((x,y)=>x+y,0);return e.map(x=>x/s)}
+function softmax(values){const m=Math.max(...values),e=values.map(v=>Math.exp(v-m)),sum=e.reduce((a,b)=>a+b,0);return e.map(v=>v/sum)}
 
 function scores(tensor){
   const raw=Array.from(tensor.data||tensor).map(Number).filter(Number.isFinite);
-  if(!raw.length) throw new Error('Model returned no numeric output.');
-  if(raw.length===1){const fake=sigmoid(raw[0]);return {fake,real:1-fake}}
-  let p=raw.slice(0,2),sum=p[0]+p[1];
-  const alreadyProb=p.every(x=>x>=0&&x<=1)&&Math.abs(sum-1)<.02;
-  if(!alreadyProb)p=softmax(p);
-  return {fake:p[MODEL.fakeIndex],real:p[MODEL.realIndex]};
+  if(!raw.length)throw new Error('Model returned no numeric output.');
+
+  let probabilities;
+  if(raw.length===1){
+    const fake=sigmoid(raw[0]);
+    probabilities=[fake,1-fake];
+  }else{
+    const firstTwo=raw.slice(0,2);
+    const sum=firstTwo[0]+firstTwo[1];
+    const alreadyProbabilities=firstTwo.every(v=>v>=0&&v<=1)&&Math.abs(sum-1)<0.02;
+    probabilities=alreadyProbabilities?firstTwo:softmax(firstTwo);
+  }
+
+  const fake=probabilities[MODEL.fakeIndex];
+  const real=probabilities[MODEL.realIndex];
+  $('debugOutput').textContent=`Raw model output: [${raw.slice(0,2).map(v=>v.toFixed(6)).join(', ')}] · mapped as fake=${fake.toFixed(6)}, real=${real.toFixed(6)}`;
+  console.log('Raw output:',raw,'Mapped probabilities:',{fake,real});
+  return {fake,real};
 }
 
 function draw(source,w,h){canvas.width=w;canvas.height=h;ctx.drawImage(source,0,0,w,h)}
@@ -68,7 +91,6 @@ function overlay(fake){const text=`Fake score ${(fake*100).toFixed(1)}%`,pad=Mat
 function preprocess(source,w,h){
   const n=MODEL.size,c=document.createElement('canvas');c.width=n;c.height=n;
   const x=c.getContext('2d',{willReadFrequently:true});
-  // Matches torchvision Resize((224,224)): direct resize, not letterboxing.
   x.drawImage(source,0,0,w,h,0,0,n,n);
   const rgba=x.getImageData(0,0,n,n).data,out=new Float32Array(3*n*n),area=n*n;
   for(let i=0;i<area;i++){
@@ -79,53 +101,86 @@ function preprocess(source,w,h){
   return new ort.Tensor('float32',out,[1,3,n,n]);
 }
 
-function update(s,ms){
-  const fake=s.fake>=threshold,conf=fake?s.fake:s.real,label=fake?'Fake':'Real';
-  $('metricLabel').textContent=label;$('metricConf').textContent=(conf*100).toFixed(1)+'%';$('metricFake').textContent=(s.fake*100).toFixed(1)+'%';$('metricMs').textContent=Math.round(ms)+' ms';
-  $('realProb').textContent=(s.real*100).toFixed(2)+'%';$('fakeProb').textContent=(s.fake*100).toFixed(2)+'%';$('scoreBar').style.width=(s.fake*100)+'%';
-  $('resultBadge').textContent=fake?'Deepfake likely':'Likely real';$('resultBadge').className='badge '+(fake?'fake':'real');
-  $('resultSummary').textContent=fake?'The fake probability meets the selected threshold.':'The fake probability is below the selected threshold.';
+function update(result,ms){
+  const isFake=result.fake>=threshold;
+  const confidence=isFake?result.fake:result.real;
+  $('metricLabel').textContent=isFake?'Fake':'Real';
+  $('metricConf').textContent=(confidence*100).toFixed(1)+'%';
+  $('metricFake').textContent=(result.fake*100).toFixed(1)+'%';
+  $('metricMs').textContent=Math.round(ms)+' ms';
+  $('realProb').textContent=(result.real*100).toFixed(2)+'%';
+  $('fakeProb').textContent=(result.fake*100).toFixed(2)+'%';
+  $('scoreBar').style.width=(result.fake*100)+'%';
+  $('resultBadge').textContent=isFake?'Deepfake likely':'Likely real';
+  $('resultBadge').className='badge '+(isFake?'fake':'real');
+  $('resultSummary').textContent=isFake?'The fake probability meets the selected threshold.':'The fake probability is below the selected threshold.';
 }
 
 async function fetchModel(){
-  const r=await fetch(MODEL.path,{cache:'no-cache'});if(!r.ok)throw new Error(`Cannot download ${MODEL.path} (HTTP ${r.status}).`);
-  const total=Number(r.headers.get('content-length'))||0;if(!r.body||!total)return r.arrayBuffer();
-  const reader=r.body.getReader(),parts=[];let got=0;
-  while(true){const {done,value}=await reader.read();if(done)break;parts.push(value);got+=value.length;progress(Math.round(100*got/total))}
-  return new Blob(parts).arrayBuffer();
+  const response=await fetch(MODEL.path,{cache:'no-cache'});
+  if(!response.ok)throw new Error(`Cannot download ${MODEL.path} (HTTP ${response.status}).`);
+  const total=Number(response.headers.get('content-length'))||0;
+  if(!response.body||!total)return response.arrayBuffer();
+  const reader=response.body.getReader(),chunks=[];let received=0;
+  while(true){const {done,value}=await reader.read();if(done)break;chunks.push(value);received+=value.length;progress(Math.round(100*received/total))}
+  return new Blob(chunks).arrayBuffer();
 }
 
 async function loadModel(){
   try{
-    if(location.protocol==='file:')throw new Error('Serve the project through GitHub Pages or localhost; file:// cannot fetch the model.');
+    if(location.protocol==='file:')throw new Error('Use GitHub Pages or localhost; file:// cannot fetch the model.');
     ort.env.wasm.wasmPaths='https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/';
     ort.env.wasm.numThreads=self.crossOriginIsolated?Math.min(4,navigator.hardwareConcurrency||1):1;
-    status('Downloading FP32 model…','busy');progress(0);const bytes=await fetchModel();
+    status('Downloading FP32 model…','busy');progress(0);
+    const bytes=await fetchModel();
     status('Creating WASM inference session…','busy');
     session=await ort.InferenceSession.create(bytes,{executionProviders:['wasm'],graphOptimizationLevel:'all'});
     inputName=session.inputNames[0];outputName=session.outputNames[0];progress(null);
     status(`Model ready · input ${inputName} · output ${outputName}`,'on');
-  }catch(e){console.error(e);progress(null);status('Model error: '+e.message,'err')}
+  }catch(error){console.error(error);progress(null);status('Model error: '+error.message,'err')}
 }
 
 async function infer(source,w,h){
-  if(!session){status('Model is not ready yet.','busy');return}if(running)return;running=true;
-  try{status('Running inference…','busy');const input=preprocess(source,w,h),t=performance.now();const result=await session.run({[inputName]:input});const ms=performance.now()-t,s=scores(result[outputName]);draw(source,w,h);overlay(s.fake);update(s,ms);status('Inference complete.','on')}
-  catch(e){console.error(e);status('Inference error: '+e.message,'err')}finally{running=false}
+  if(!session){status('Model is not ready yet.','busy');return}
+  if(running)return;
+  running=true;
+  try{
+    status('Running inference…','busy');
+    const input=preprocess(source,w,h),start=performance.now();
+    const outputMap=await session.run({[inputName]:input});
+    const elapsed=performance.now()-start;
+    const result=scores(outputMap[outputName]);
+    draw(source,w,h);overlay(result.fake);update(result,elapsed);status('Inference complete.','on');
+  }catch(error){console.error(error);status('Inference error: '+error.message,'err')}
+  finally{running=false}
 }
 
-function imageFile(file){if(!file||!file.type.startsWith('image/')){status('Choose a valid image file.','err');return}const img=new Image();const url=URL.createObjectURL(file);img.onload=()=>{draw(img,img.naturalWidth,img.naturalHeight);infer(img,img.naturalWidth,img.naturalHeight);URL.revokeObjectURL(url)};img.onerror=()=>{URL.revokeObjectURL(url);status('Unable to decode the image.','err')};img.src=url}
-function stopCamera(){if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;video.pause();video.srcObject=null;$('startCam').disabled=false;$('stopCam').disabled=true;$('captureFrame').disabled=true}
-async function startCamera(){try{stopCamera();stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:false});video.srcObject=stream;await video.play();$('startCam').disabled=true;$('stopCam').disabled=false;$('captureFrame').disabled=false;status('Camera ready. Select Analyze frame.','on');preview()}catch(e){status('Camera unavailable: '+e.message,'err')}}
-function preview(){if(!stream||video.readyState<2)return;draw(video,video.videoWidth,video.videoHeight);requestAnimationFrame(preview)}
-function setMode(mode){document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));$('imagePane').classList.toggle('hidden',mode!=='image');$('cameraPane').classList.toggle('hidden',mode!=='camera');if(mode!=='camera')stopCamera()}
+function imageFile(file){
+  if(!file||!file.type.startsWith('image/')){status('Choose a valid image file.','err');return}
+  const image=new Image(),url=URL.createObjectURL(file);
+  image.onload=()=>{draw(image,image.naturalWidth,image.naturalHeight);infer(image,image.naturalWidth,image.naturalHeight);URL.revokeObjectURL(url)};
+  image.onerror=()=>{URL.revokeObjectURL(url);status('Unable to decode the image.','err')};
+  image.src=url;
+}
 
-$('themeButton').onclick=()=>{const d=document.documentElement,t=d.dataset.theme==='dark'?'light':'dark';d.dataset.theme=t};
-$('dropZone').onclick=()=>$('fileInput').click();$('dropZone').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();$('fileInput').click()}};$('fileInput').onchange=e=>imageFile(e.target.files[0]);
-['dragenter','dragover'].forEach(n=>$('dropZone').addEventListener(n,e=>{e.preventDefault();$('dropZone').classList.add('drag')}));
-['dragleave','drop'].forEach(n=>$('dropZone').addEventListener(n,e=>{e.preventDefault();$('dropZone').classList.remove('drag');if(n==='drop')imageFile(e.dataTransfer.files[0])}));
-thresholdEl.oninput=e=>{threshold=Number(e.target.value);$('thresholdValue').textContent=threshold.toFixed(2)};
-document.querySelectorAll('.mode-btn').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));$('startCam').onclick=startCamera;$('stopCam').onclick=()=>{stopCamera();status('Camera stopped.','on')};$('captureFrame').onclick=()=>{if(stream&&video.readyState>=2)infer(video,video.videoWidth,video.videoHeight)};addEventListener('beforeunload',stopCamera);
+function stopCamera(){if(stream)stream.getTracks().forEach(track=>track.stop());stream=null;video.pause();video.srcObject=null;$('startCam').disabled=false;$('stopCam').disabled=true;$('captureFrame').disabled=true}
+async function startCamera(){try{stopCamera();stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:false});video.srcObject=stream;await video.play();$('startCam').disabled=true;$('stopCam').disabled=false;$('captureFrame').disabled=false;status('Camera ready. Select Analyze frame.','on');preview()}catch(error){status('Camera unavailable: '+error.message,'err')}}
+function preview(){if(!stream||video.readyState<2)return;draw(video,video.videoWidth,video.videoHeight);requestAnimationFrame(preview)}
+function setMode(mode){document.querySelectorAll('.mode-btn').forEach(button=>button.classList.toggle('active',button.dataset.mode===mode));$('imagePane').classList.toggle('hidden',mode!=='image');$('cameraPane').classList.toggle('hidden',mode!=='camera');if(mode!=='camera')stopCamera()}
+
+$('themeButton').onclick=()=>{const root=document.documentElement;root.dataset.theme=root.dataset.theme==='dark'?'light':'dark'};
+$('dropZone').onclick=()=>$('fileInput').click();
+$('dropZone').onkeydown=event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();$('fileInput').click()}};
+$('fileInput').onchange=event=>imageFile(event.target.files[0]);
+['dragenter','dragover'].forEach(name=>$('dropZone').addEventListener(name,event=>{event.preventDefault();$('dropZone').classList.add('drag')}));
+['dragleave','drop'].forEach(name=>$('dropZone').addEventListener(name,event=>{event.preventDefault();$('dropZone').classList.remove('drag');if(name==='drop')imageFile(event.dataTransfer.files[0])}));
+thresholdEl.oninput=event=>{threshold=Number(event.target.value);$('thresholdValue').textContent=threshold.toFixed(2)};
+document.querySelectorAll('.mode-btn').forEach(button=>button.onclick=()=>setMode(button.dataset.mode));
+$('startCam').onclick=startCamera;
+$('stopCam').onclick=()=>{stopCamera();status('Camera stopped.','on')};
+$('captureFrame').onclick=()=>{if(stream&&video.readyState>=2)infer(video,video.videoWidth,video.videoHeight)};
+addEventListener('beforeunload',stopCamera);
+
 ctx.fillStyle='#111';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font='700 28px Satoshi,Arial';ctx.fillText('XDeepFake preview',canvas.width/2,canvas.height/2-10);ctx.font='400 17px Satoshi,Arial';ctx.fillText('Upload an image or start the camera.',canvas.width/2,canvas.height/2+28);
 loadModel();
 })();
