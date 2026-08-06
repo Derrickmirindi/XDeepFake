@@ -86,7 +86,7 @@ function scores(tensor){
 }
 
 function draw(source,w,h){canvas.width=w;canvas.height=h;ctx.drawImage(source,0,0,w,h)}
-function overlay(fake){const text=`Fake score ${(fake*100).toFixed(1)}%`,pad=Math.max(10,canvas.width*.012),h=Math.max(36,canvas.width*.05);ctx.font=`700 ${Math.max(14,Math.round(canvas.width/36))}px Satoshi,Arial`;const tw=ctx.measureText(text).width;ctx.fillStyle=fake>=threshold?'#a12c7b':'#437a22';ctx.fillRect(pad,pad,tw+20,h);ctx.fillStyle='#fff';ctx.textBaseline='middle';ctx.fillText(text,pad+10,pad+h/2)}
+function overlay(fake){const verdict=fake>=threshold?'FAKE':'REAL',pct=(fake>=threshold?fake:1-fake)*100,text=`${verdict} ${pct.toFixed(1)}%`,pad=Math.max(10,canvas.width*.012),h=Math.max(36,canvas.width*.05);ctx.font=`700 ${Math.max(14,Math.round(canvas.width/36))}px Satoshi,Arial`;const tw=ctx.measureText(text).width;ctx.fillStyle=fake>=threshold?'#a12c7b':'#437a22';ctx.fillRect(pad,pad,tw+20,h);ctx.fillStyle='#fff';ctx.textBaseline='middle';ctx.fillText(text,pad+10,pad+h/2)}
 
 function preprocess(source,w,h){
   const n=MODEL.size,c=document.createElement('canvas');c.width=n;c.height=n;
