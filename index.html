@@ -14,175 +14,54 @@
 </head>
 <body>
 <div class="container">
-<header class="topbar">
-  <div class="brand"><div class="logo">X</div><div><h1>XDeepFake</h1><p class="subtitle">Private, browser-based deepfake classification with a ViT-Tiny FP32 ONNX model. Images remain on your device.</p></div></div>
-  <button id="themeButton" class="icon-btn" aria-label="Toggle theme">◐</button>
-</header>
+<header class="topbar"><div class="brand"><div class="logo">X</div><div><h1>XDeepFake</h1><p class="subtitle">Private, browser-based deepfake classification using a validated ViT-Tiny FP32 ONNX model.</p></div></div><button id="themeButton" class="icon-btn" aria-label="Toggle theme">◐</button></header>
 <main class="layout">
 <aside class="panel">
-  <div class="section-title">Input mode</div>
-  <div class="mode-list"><button class="mode-btn active" data-mode="image">Image upload</button><button class="mode-btn" data-mode="camera">Live camera</button></div>
-  <p class="helper">Inference runs locally with ONNX Runtime Web. Use GitHub Pages or localhost; do not open this page through <code>file://</code>.</p>
-  <div class="control"><div class="section-title">Decision threshold</div><label for="threshold"><span>Fake threshold</span><span id="thresholdValue">0.50</span></label><input id="threshold" type="range" min="0.05" max="0.95" step="0.01" value="0.50"><p class="helper">A higher threshold reduces false-positive deepfake warnings.</p></div>
-  <div class="model-card"><div class="section-title">Browser model</div><code>./vit_deepfake_web.onnx</code><p class="helper"><strong>Correct output order:</strong> class 0 = fake, class 1 = real.</p></div>
-  <div class="note">Research use only. Compression, screenshots, distribution shifts, and unseen generators can reduce reliability.</div>
+<div class="section-title">Input mode</div><div class="mode-list"><button class="mode-btn active" data-mode="image">Image upload</button><button class="mode-btn" data-mode="camera">Live camera</button></div>
+<p class="helper">Inference runs locally. Use GitHub Pages or localhost, not <code>file://</code>.</p>
+<div class="control"><div class="section-title">Decision threshold</div><label for="threshold"><span>Fake threshold</span><span id="thresholdValue">0.50</span></label><input id="threshold" type="range" min="0.05" max="0.95" step="0.01" value="0.50"><p class="helper">A higher threshold reduces false-positive fake classifications.</p></div>
+<div class="model-card"><div class="section-title">Model contract</div><code>./vit_deepfake_web.onnx</code><p class="helper">Input: normalized RGB [1,3,224,224]. Output: two raw logits [fake, real].</p></div>
+<div class="note">Research use only. If Python validation reports one-class collapse, retrain the student—the browser cannot correct the model.</div>
 </aside>
 <section class="stage">
-  <div class="status"><span id="statusDot" class="dot busy"></span><span id="statusText">Initializing…</span></div>
-  <div id="progress" class="progress hidden"><div id="progressBar"></div></div>
-  <section id="imagePane"><div id="dropZone" class="drop" tabindex="0" role="button"><div><strong>Click or drag an image here</strong><div class="helper">PNG, JPG, or WEBP</div></div></div><input id="fileInput" class="hidden" type="file" accept="image/*"></section>
-  <section id="cameraPane" class="hidden"><div class="actions"><button id="startCam" class="btn primary">Start camera</button><button id="stopCam" class="btn" disabled>Stop camera</button><button id="captureFrame" class="btn" disabled>Analyze frame</button></div></section>
-  <div class="canvas-shell"><canvas id="canvas" width="960" height="540"></canvas><video id="video" class="source-video" playsinline muted></video></div>
-  <div class="metrics"><div class="metric"><div class="k">Prediction</div><div id="metricLabel" class="v">—</div></div><div class="metric"><div class="k">Confidence</div><div id="metricConf" class="v">—</div></div><div class="metric"><div class="k">Fake score</div><div id="metricFake" class="v">—</div></div><div class="metric"><div class="k">Inference</div><div id="metricMs" class="v">—</div></div></div>
-  <div class="result"><div class="result-head"><div><div class="section-title">Result</div><div id="resultSummary">Load the model and analyze an input.</div></div><span id="resultBadge" class="badge real">Waiting</span></div><div class="track"><div id="scoreBar" class="fill"></div></div><div class="probs"><div class="prob"><div class="label">Real probability</div><div id="realProb" class="value">—</div></div><div class="prob"><div class="label">Fake probability</div><div id="fakeProb" class="value">—</div></div></div><div id="debugOutput" class="debug">Raw output will appear here.</div></div>
-</section>
-</main>
-<footer class="footer">XDeepFake · ViT-Tiny FP32 · ONNX Runtime Web</footer>
-</div>
+<div class="status"><span id="statusDot" class="dot busy"></span><span id="statusText">Initializing…</span></div><div id="progress" class="progress hidden"><div id="progressBar"></div></div>
+<section id="imagePane"><div id="dropZone" class="drop" tabindex="0" role="button"><div><strong>Click or drag an image here</strong><div class="helper">PNG, JPG, or WEBP</div></div></div><input id="fileInput" class="hidden" type="file" accept="image/*"></section>
+<section id="cameraPane" class="hidden"><div class="actions"><button id="startCam" class="btn primary">Start camera</button><button id="stopCam" class="btn" disabled>Stop camera</button><button id="captureFrame" class="btn" disabled>Analyze frame</button></div></section>
+<div class="canvas-shell"><canvas id="canvas" width="960" height="540"></canvas><video id="video" class="source-video" playsinline muted></video></div>
+<div class="metrics"><div class="metric"><div class="k">Prediction</div><div id="metricLabel" class="v">—</div></div><div class="metric"><div class="k">Confidence</div><div id="metricConf" class="v">—</div></div><div class="metric"><div class="k">Fake score</div><div id="metricFake" class="v">—</div></div><div class="metric"><div class="k">Inference</div><div id="metricMs" class="v">—</div></div></div>
+<div class="result"><div class="result-head"><div><div class="section-title">Result</div><div id="resultSummary">Load the model and analyze an input.</div></div><span id="resultBadge" class="badge real">Waiting</span></div><div class="track"><div id="scoreBar" class="fill"></div></div><div class="probs"><div class="prob"><div class="label">Real probability</div><div id="realProb" class="value">—</div></div><div class="prob"><div class="label">Fake probability</div><div id="fakeProb" class="value">—</div></div></div><div id="debugOutput" class="debug">Raw logits will appear here.</div></div>
+</section></main><footer class="footer">XDeepFake · ViT-Tiny FP32 · ONNX Runtime Web</footer></div>
 <script>
 (() => {
 'use strict';
 const $=id=>document.getElementById(id);
-
-// ImageFolder sorted the training folders alphabetically: ['fake', 'real'].
-// Therefore model output index 0 is FAKE and index 1 is REAL.
-const MODEL={
-  path:'./vit_deepfake_web.onnx',
-  size:224,
-  fakeIndex:0,
-  realIndex:1,
-  mean:[0.485,0.456,0.406],
-  std:[0.229,0.224,0.225]
-};
-
+const MODEL={path:'./vit_deepfake_web.onnx?v=3',size:224,fakeIndex:0,realIndex:1,mean:[.485,.456,.406],std:[.229,.224,.225]};
 const canvas=$('canvas'),ctx=canvas.getContext('2d'),video=$('video'),thresholdEl=$('threshold');
 let session=null,inputName=null,outputName=null,stream=null,threshold=Number(thresholdEl.value),running=false;
-
 function status(text,kind=''){$('statusText').textContent=text;$('statusDot').className='dot '+kind}
-function progress(value){$('progress').classList.toggle('hidden',value==null);$('progressBar').style.width=(value||0)+'%'}
-function sigmoid(x){return 1/(1+Math.exp(-x))}
-function softmax(values){const m=Math.max(...values),e=values.map(v=>Math.exp(v-m)),sum=e.reduce((a,b)=>a+b,0);return e.map(v=>v/sum)}
-
+function progress(v){$('progress').classList.toggle('hidden',v==null);$('progressBar').style.width=(v||0)+'%'}
+function softmax(a){const m=Math.max(...a),e=a.map(v=>Math.exp(v-m)),s=e.reduce((x,y)=>x+y,0);return e.map(v=>v/s)}
 function scores(tensor){
-  const raw=Array.from(tensor.data||tensor).map(Number).filter(Number.isFinite);
-  if(!raw.length)throw new Error('Model returned no numeric output.');
-
-  let probabilities;
-  if(raw.length===1){
-    const fake=sigmoid(raw[0]);
-    probabilities=[fake,1-fake];
-  }else{
-    const firstTwo=raw.slice(0,2);
-    const sum=firstTwo[0]+firstTwo[1];
-    const alreadyProbabilities=firstTwo.every(v=>v>=0&&v<=1)&&Math.abs(sum-1)<0.02;
-    probabilities=alreadyProbabilities?firstTwo:softmax(firstTwo);
-  }
-
-  const fake=probabilities[MODEL.fakeIndex];
-  const real=probabilities[MODEL.realIndex];
-  $('debugOutput').textContent=`Raw model output: [${raw.slice(0,2).map(v=>v.toFixed(6)).join(', ')}] · mapped as fake=${fake.toFixed(6)}, real=${real.toFixed(6)}`;
-  console.log('Raw output:',raw,'Mapped probabilities:',{fake,real});
-  return {fake,real};
+ const raw=Array.from(tensor.data||tensor).map(Number).filter(Number.isFinite);
+ if(raw.length!==2)throw new Error(`Expected exactly 2 logits [fake, real], received ${raw.length}.`);
+ const p=softmax(raw),fake=p[MODEL.fakeIndex],real=p[MODEL.realIndex];
+ $('debugOutput').textContent=`Raw logits [fake, real]: [${raw.map(v=>v.toFixed(6)).join(', ')}] · P(fake)=${fake.toFixed(6)}, P(real)=${real.toFixed(6)}`;
+ console.log({rawLogits:raw,fakeProbability:fake,realProbability:real});return{fake,real};
 }
-
 function draw(source,w,h){canvas.width=w;canvas.height=h;ctx.drawImage(source,0,0,w,h)}
-function overlay(fake){const verdict=fake>=threshold?'FAKE':'REAL',pct=(fake>=threshold?fake:1-fake)*100,text=`${verdict} ${pct.toFixed(1)}%`,pad=Math.max(10,canvas.width*.012),h=Math.max(36,canvas.width*.05);ctx.font=`700 ${Math.max(14,Math.round(canvas.width/36))}px Satoshi,Arial`;const tw=ctx.measureText(text).width;ctx.fillStyle=fake>=threshold?'#a12c7b':'#437a22';ctx.fillRect(pad,pad,tw+20,h);ctx.fillStyle='#fff';ctx.textBaseline='middle';ctx.fillText(text,pad+10,pad+h/2)}
-
-function preprocess(source,w,h){
-  const n=MODEL.size,c=document.createElement('canvas');c.width=n;c.height=n;
-  const x=c.getContext('2d',{willReadFrequently:true});
-  x.drawImage(source,0,0,w,h,0,0,n,n);
-  const rgba=x.getImageData(0,0,n,n).data,out=new Float32Array(3*n*n),area=n*n;
-  for(let i=0;i<area;i++){
-    out[i]=(rgba[4*i]/255-MODEL.mean[0])/MODEL.std[0];
-    out[area+i]=(rgba[4*i+1]/255-MODEL.mean[1])/MODEL.std[1];
-    out[2*area+i]=(rgba[4*i+2]/255-MODEL.mean[2])/MODEL.std[2];
-  }
-  return new ort.Tensor('float32',out,[1,3,n,n]);
-}
-
-function update(result,ms){
-  const isFake=result.fake>=threshold;
-  const confidence=isFake?result.fake:result.real;
-  $('metricLabel').textContent=isFake?'Fake':'Real';
-  $('metricConf').textContent=(confidence*100).toFixed(1)+'%';
-  $('metricFake').textContent=(result.fake*100).toFixed(1)+'%';
-  $('metricMs').textContent=Math.round(ms)+' ms';
-  $('realProb').textContent=(result.real*100).toFixed(2)+'%';
-  $('fakeProb').textContent=(result.fake*100).toFixed(2)+'%';
-  $('scoreBar').style.width=(result.fake*100)+'%';
-  $('resultBadge').textContent=isFake?'Deepfake likely':'Likely real';
-  $('resultBadge').className='badge '+(isFake?'fake':'real');
-  $('resultSummary').textContent=isFake?'The fake probability meets the selected threshold.':'The fake probability is below the selected threshold.';
-}
-
-async function fetchModel(){
-  const response=await fetch(MODEL.path,{cache:'no-cache'});
-  if(!response.ok)throw new Error(`Cannot download ${MODEL.path} (HTTP ${response.status}).`);
-  const total=Number(response.headers.get('content-length'))||0;
-  if(!response.body||!total)return response.arrayBuffer();
-  const reader=response.body.getReader(),chunks=[];let received=0;
-  while(true){const {done,value}=await reader.read();if(done)break;chunks.push(value);received+=value.length;progress(Math.round(100*received/total))}
-  return new Blob(chunks).arrayBuffer();
-}
-
-async function loadModel(){
-  try{
-    if(location.protocol==='file:')throw new Error('Use GitHub Pages or localhost; file:// cannot fetch the model.');
-    ort.env.wasm.wasmPaths='https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/';
-    ort.env.wasm.numThreads=self.crossOriginIsolated?Math.min(4,navigator.hardwareConcurrency||1):1;
-    status('Downloading FP32 model…','busy');progress(0);
-    const bytes=await fetchModel();
-    status('Creating WASM inference session…','busy');
-    session=await ort.InferenceSession.create(bytes,{executionProviders:['wasm'],graphOptimizationLevel:'all'});
-    inputName=session.inputNames[0];outputName=session.outputNames[0];progress(null);
-    status(`Model ready · input ${inputName} · output ${outputName}`,'on');
-  }catch(error){console.error(error);progress(null);status('Model error: '+error.message,'err')}
-}
-
-async function infer(source,w,h){
-  if(!session){status('Model is not ready yet.','busy');return}
-  if(running)return;
-  running=true;
-  try{
-    status('Running inference…','busy');
-    const input=preprocess(source,w,h),start=performance.now();
-    const outputMap=await session.run({[inputName]:input});
-    const elapsed=performance.now()-start;
-    const result=scores(outputMap[outputName]);
-    draw(source,w,h);overlay(result.fake);update(result,elapsed);status('Inference complete.','on');
-  }catch(error){console.error(error);status('Inference error: '+error.message,'err')}
-  finally{running=false}
-}
-
-function imageFile(file){
-  if(!file||!file.type.startsWith('image/')){status('Choose a valid image file.','err');return}
-  const image=new Image(),url=URL.createObjectURL(file);
-  image.onload=()=>{draw(image,image.naturalWidth,image.naturalHeight);infer(image,image.naturalWidth,image.naturalHeight);URL.revokeObjectURL(url)};
-  image.onerror=()=>{URL.revokeObjectURL(url);status('Unable to decode the image.','err')};
-  image.src=url;
-}
-
-function stopCamera(){if(stream)stream.getTracks().forEach(track=>track.stop());stream=null;video.pause();video.srcObject=null;$('startCam').disabled=false;$('stopCam').disabled=true;$('captureFrame').disabled=true}
-async function startCamera(){try{stopCamera();stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:false});video.srcObject=stream;await video.play();$('startCam').disabled=true;$('stopCam').disabled=false;$('captureFrame').disabled=false;status('Camera ready. Select Analyze frame.','on');preview()}catch(error){status('Camera unavailable: '+error.message,'err')}}
+function overlay(fake){const isFake=fake>=threshold,confidence=isFake?fake:1-fake,text=`${isFake?'FAKE':'REAL'} ${(confidence*100).toFixed(1)}%`,pad=Math.max(10,canvas.width*.012),h=Math.max(36,canvas.width*.05);ctx.font=`700 ${Math.max(14,Math.round(canvas.width/36))}px Satoshi,Arial`;const tw=ctx.measureText(text).width;ctx.fillStyle=isFake?'#a12c7b':'#437a22';ctx.fillRect(pad,pad,tw+20,h);ctx.fillStyle='#fff';ctx.textBaseline='middle';ctx.fillText(text,pad+10,pad+h/2)}
+function preprocess(source,w,h){const n=MODEL.size,c=document.createElement('canvas');c.width=n;c.height=n;const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(source,0,0,w,h,0,0,n,n);const rgba=x.getImageData(0,0,n,n).data,out=new Float32Array(3*n*n),area=n*n;for(let i=0;i<area;i++){out[i]=(rgba[4*i]/255-MODEL.mean[0])/MODEL.std[0];out[area+i]=(rgba[4*i+1]/255-MODEL.mean[1])/MODEL.std[1];out[2*area+i]=(rgba[4*i+2]/255-MODEL.mean[2])/MODEL.std[2]}return new ort.Tensor('float32',out,[1,3,n,n])}
+function update(r,ms){const fake=r.fake>=threshold,confidence=fake?r.fake:r.real;$('metricLabel').textContent=fake?'Fake':'Real';$('metricConf').textContent=(confidence*100).toFixed(1)+'%';$('metricFake').textContent=(r.fake*100).toFixed(1)+'%';$('metricMs').textContent=Math.round(ms)+' ms';$('realProb').textContent=(r.real*100).toFixed(2)+'%';$('fakeProb').textContent=(r.fake*100).toFixed(2)+'%';$('scoreBar').style.width=(r.fake*100)+'%';$('resultBadge').textContent=fake?'Deepfake likely':'Likely real';$('resultBadge').className='badge '+(fake?'fake':'real');$('resultSummary').textContent=fake?'The fake probability meets the selected threshold.':'The fake probability is below the selected threshold.'}
+async function fetchModel(){const r=await fetch(MODEL.path,{cache:'no-store'});if(!r.ok)throw new Error(`Cannot download the model (HTTP ${r.status}).`);const total=Number(r.headers.get('content-length'))||0;if(!r.body||!total)return r.arrayBuffer();const reader=r.body.getReader(),chunks=[];let received=0;while(true){const{done,value}=await reader.read();if(done)break;chunks.push(value);received+=value.length;progress(Math.round(100*received/total))}return new Blob(chunks).arrayBuffer()}
+async function loadModel(){try{if(location.protocol==='file:')throw new Error('Use GitHub Pages or localhost, not file://.');ort.env.wasm.wasmPaths='https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/';ort.env.wasm.numThreads=self.crossOriginIsolated?Math.min(4,navigator.hardwareConcurrency||1):1;status('Downloading validated FP32 model…','busy');progress(0);const bytes=await fetchModel();status('Creating WASM inference session…','busy');session=await ort.InferenceSession.create(bytes,{executionProviders:['wasm'],graphOptimizationLevel:'all'});inputName=session.inputNames[0];outputName=session.outputNames[0];progress(null);status(`Model ready · ${inputName} → ${outputName}`,'on')}catch(e){console.error(e);progress(null);status('Model error: '+e.message,'err')}}
+async function infer(source,w,h){if(!session){status('Model is not ready.','busy');return}if(running)return;running=true;try{status('Running inference…','busy');const input=preprocess(source,w,h),start=performance.now(),map=await session.run({[inputName]:input}),ms=performance.now()-start,r=scores(map[outputName]);draw(source,w,h);overlay(r.fake);update(r,ms);status('Inference complete.','on')}catch(e){console.error(e);status('Inference error: '+e.message,'err')}finally{running=false}}
+function imageFile(file){if(!file||!file.type.startsWith('image/')){status('Choose a valid image file.','err');return}const image=new Image(),url=URL.createObjectURL(file);image.onload=()=>{draw(image,image.naturalWidth,image.naturalHeight);infer(image,image.naturalWidth,image.naturalHeight);URL.revokeObjectURL(url)};image.onerror=()=>{URL.revokeObjectURL(url);status('Unable to decode image.','err')};image.src=url}
+function stopCamera(){if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;video.pause();video.srcObject=null;$('startCam').disabled=false;$('stopCam').disabled=true;$('captureFrame').disabled=true}
+async function startCamera(){try{stopCamera();stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:false});video.srcObject=stream;await video.play();$('startCam').disabled=true;$('stopCam').disabled=false;$('captureFrame').disabled=false;status('Camera ready. Select Analyze frame.','on');preview()}catch(e){status('Camera unavailable: '+e.message,'err')}}
 function preview(){if(!stream||video.readyState<2)return;draw(video,video.videoWidth,video.videoHeight);requestAnimationFrame(preview)}
-function setMode(mode){document.querySelectorAll('.mode-btn').forEach(button=>button.classList.toggle('active',button.dataset.mode===mode));$('imagePane').classList.toggle('hidden',mode!=='image');$('cameraPane').classList.toggle('hidden',mode!=='camera');if(mode!=='camera')stopCamera()}
-
-$('themeButton').onclick=()=>{const root=document.documentElement;root.dataset.theme=root.dataset.theme==='dark'?'light':'dark'};
-$('dropZone').onclick=()=>$('fileInput').click();
-$('dropZone').onkeydown=event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();$('fileInput').click()}};
-$('fileInput').onchange=event=>imageFile(event.target.files[0]);
-['dragenter','dragover'].forEach(name=>$('dropZone').addEventListener(name,event=>{event.preventDefault();$('dropZone').classList.add('drag')}));
-['dragleave','drop'].forEach(name=>$('dropZone').addEventListener(name,event=>{event.preventDefault();$('dropZone').classList.remove('drag');if(name==='drop')imageFile(event.dataTransfer.files[0])}));
-thresholdEl.oninput=event=>{threshold=Number(event.target.value);$('thresholdValue').textContent=threshold.toFixed(2)};
-document.querySelectorAll('.mode-btn').forEach(button=>button.onclick=()=>setMode(button.dataset.mode));
-$('startCam').onclick=startCamera;
-$('stopCam').onclick=()=>{stopCamera();status('Camera stopped.','on')};
-$('captureFrame').onclick=()=>{if(stream&&video.readyState>=2)infer(video,video.videoWidth,video.videoHeight)};
-addEventListener('beforeunload',stopCamera);
-
-ctx.fillStyle='#111';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font='700 28px Satoshi,Arial';ctx.fillText('XDeepFake preview',canvas.width/2,canvas.height/2-10);ctx.font='400 17px Satoshi,Arial';ctx.fillText('Upload an image or start the camera.',canvas.width/2,canvas.height/2+28);
-loadModel();
+function setMode(mode){document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));$('imagePane').classList.toggle('hidden',mode!=='image');$('cameraPane').classList.toggle('hidden',mode!=='camera');if(mode!=='camera')stopCamera()}
+$('themeButton').onclick=()=>{const r=document.documentElement;r.dataset.theme=r.dataset.theme==='dark'?'light':'dark'};$('dropZone').onclick=()=>$('fileInput').click();$('dropZone').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();$('fileInput').click()}};$('fileInput').onchange=e=>imageFile(e.target.files[0]);['dragenter','dragover'].forEach(n=>$('dropZone').addEventListener(n,e=>{e.preventDefault();$('dropZone').classList.add('drag')}));['dragleave','drop'].forEach(n=>$('dropZone').addEventListener(n,e=>{e.preventDefault();$('dropZone').classList.remove('drag');if(n==='drop')imageFile(e.dataTransfer.files[0])}));thresholdEl.oninput=e=>{threshold=Number(e.target.value);$('thresholdValue').textContent=threshold.toFixed(2)};document.querySelectorAll('.mode-btn').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));$('startCam').onclick=startCamera;$('stopCam').onclick=()=>{stopCamera();status('Camera stopped.','on')};$('captureFrame').onclick=()=>{if(stream&&video.readyState>=2)infer(video,video.videoWidth,video.videoHeight)};addEventListener('beforeunload',stopCamera);
+ctx.fillStyle='#111';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font='700 28px Satoshi,Arial';ctx.fillText('XDeepFake preview',canvas.width/2,canvas.height/2-10);ctx.font='400 17px Satoshi,Arial';ctx.fillText('Upload an image or start the camera.',canvas.width/2,canvas.height/2+28);loadModel();
 })();
 </script>
 </body>
