@@ -17,25 +17,12 @@ XDeepFake lets you check whether an image is likely REAL or FAKE (AI-generated o
 - Reports prediction, confidence, fake score, and inference time
 - Light and dark mode
 
-## Files
+## Development
 
-- index.html - The web app (UI plus in-browser inference logic)
-- vit_deepfake.onnx - The ViT deepfake detection model used for inference
-- vit_tiny_student.pt - PyTorch checkpoint of the trained (distilled) student model
+The tool cannot be used for commercial purposes. Only can be used to foster education.
+By Derrick Mirindi, Frederic Mirindi & David Sinkhonde
 
-## Usage
 
-1. Serve the repository over HTTP (for example, GitHub Pages or a local static server). Opening index.html directly from the file system may block model loading.
-2. Open index.html in a modern browser.
-3. Choose an input mode: Image upload or Live camera.
-4. Load the model, then analyze an image or camera frame.
-5. Adjust the decision threshold as needed. Higher values reduce false positives but can miss manipulated images.
-
-The app expects the model at the path ./vit_deepfake.onnx relative to index.html.
-
-## Model Export Note
-
-ONNX Runtime Web does not support every quantized operator. If you see an error such as "Could not find an implementation for ConvInteger", re-export vit_deepfake.onnx as fp32, or use QDQ quantization (QuantFormat.QDQ) so the graph uses web-supported ops.
 
 ## Disclaimer
 
