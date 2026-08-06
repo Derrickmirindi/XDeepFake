@@ -1,5 +1,6 @@
 # XDeepFake
-<img width="1437" height="962" alt="image" src="https://github.com/user-attachments/assets/2f0fd3d4-392e-42ae-85e8-7e5ab279d352" />
+<img width="1401" height="953" alt="image" src="https://github.com/user-attachments/assets/d2250af2-c245-4f64-abba-411ffaeec7db" />
+
 
 
 Browser-based, real-time deepfake image detector. It runs a Vision Transformer (ViT) model directly in your browser using ONNX Runtime Web, so images are analyzed locally and are not uploaded to any server by the page.
