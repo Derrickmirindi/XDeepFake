@@ -14,14 +14,14 @@
 </head>
 <body>
 <div class="container">
-<header class="topbar"><div class="brand"><div class="logo">X</div><div><h1>XDeepFake</h1><p class="subtitle">Private, browser-based deepfake classification using a validated ViT-Tiny FP32 ONNX model.</p></div></div><button id="themeButton" class="icon-btn" aria-label="Toggle theme">◐</button></header>
+<header class="topbar"><div class="brand"><div class="logo">X</div><div><h1>XDeepFake</h1><p class="subtitle">Private, browser-based deepfake classification using a validated ViT algorithm. Tool created by Derrick Mirindi, Frederic Mirindi & David Sinkhonde.</p></div></div><button id="themeButton" class="icon-btn" aria-label="Toggle theme">◐</button></header>
 <main class="layout">
 <aside class="panel">
 <div class="section-title">Input mode</div><div class="mode-list"><button class="mode-btn active" data-mode="image">Image upload</button><button class="mode-btn" data-mode="camera">Live camera</button></div>
 <p class="helper">Inference runs locally. Use GitHub Pages or localhost, not <code>file://</code>.</p>
 <div class="control"><div class="section-title">Decision threshold</div><label for="threshold"><span>Fake threshold</span><span id="thresholdValue">0.36</span></label><input id="threshold" type="range" min="0.05" max="0.95" step="0.01" value="0.36"><p class="helper">A higher threshold reduces false-positive fake classifications.</p></div>
-<div class="model-card"><div class="section-title">Model contract</div><code>./vit_deepfake_web.onnx</code><p class="helper">Input: normalized RGB [1,3,224,224]. Output: two raw logits [fake, real].</p></div>
-<div class="note">Research use only. If Python validation reports one-class collapse, retrain the student—the browser cannot correct the model.</div>
+<div class="model-card"><div class="section-title">Model contract</div><code>./vit_deepfake_web</code><p class="helper">Output: two raw logits [fake, real].</p></div>
+<div class="note">Research use only. Do not sell the product. We want to improve the education system.</div>
 </aside>
 <section class="stage">
 <div class="status"><span id="statusDot" class="dot busy"></span><span id="statusText">Initializing…</span></div><div id="progress" class="progress hidden"><div id="progressBar"></div></div>
@@ -30,7 +30,7 @@
 <div class="canvas-shell"><canvas id="canvas" width="960" height="540"></canvas><video id="video" class="source-video" playsinline muted></video></div>
 <div class="metrics"><div class="metric"><div class="k">Prediction</div><div id="metricLabel" class="v">—</div></div><div class="metric"><div class="k">Confidence</div><div id="metricConf" class="v">—</div></div><div class="metric"><div class="k">Fake score</div><div id="metricFake" class="v">—</div></div><div class="metric"><div class="k">Inference</div><div id="metricMs" class="v">—</div></div></div>
 <div class="result"><div class="result-head"><div><div class="section-title">Result</div><div id="resultSummary">Load the model and analyze an input.</div></div><span id="resultBadge" class="badge real">Waiting</span></div><div class="track"><div id="scoreBar" class="fill"></div></div><div class="probs"><div class="prob"><div class="label">Real probability</div><div id="realProb" class="value">—</div></div><div class="prob"><div class="label">Fake probability</div><div id="fakeProb" class="value">—</div></div></div><div id="debugOutput" class="debug">Raw logits will appear here.</div></div>
-</section></main><footer class="footer">XDeepFake · ViT-Tiny FP32 · ONNX Runtime Web</footer></div>
+</section></main><footer class="footer">XDeepFake · ViT-Tiny FP32 · Derrick · Frederic · David  ·  2026</footer></div>
 <script>
 (() => {
 'use strict';
