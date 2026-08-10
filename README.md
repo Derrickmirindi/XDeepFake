@@ -10,7 +10,7 @@ Browser-based, real-time deepfake image detector. It runs a Vision Transformer (
 ## Overview
 
 XDeepFake lets you check whether an image is likely REAL or FAKE (AI-generated or manipulated). You can either upload an image or use a live camera feed, and inference is performed client-side in the browser.
-<img width="1220" height="430" alt="image_ViT_new" src="https://github.com/user-attachments/assets/a52afa47-bf59-4f58-9302-33436c6f5fb2" />
+<img width="1220" height="430" alt="image" src="https://github.com/user-attachments/assets/efc80fd0-9c58-4ee0-9a1a-42a12df06b9b" />
 
 ## Features
 
